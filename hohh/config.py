@@ -13,6 +13,8 @@ SYDNEY_TZ = pytz.timezone("Australia/Sydney")
 class Config:
     """Config for running the hohh CLI."""
 
+    no_spotify: bool
+
     lastfm_key: str = ""
     lastfm_secret: str = ""
     lastfm_username: str = ""
