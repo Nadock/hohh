@@ -53,3 +53,11 @@ date.
 
 If you want to just get all your listen history without filter via Spotify, use
 the `-s/--no-spotify` CLI flag.
+
+## MVP Warning
+
+This was built pretty much all in one day, and in it's current state it almost certainly
+has ugly bugs and confusing errors. If you find any of them please open an PR or issue.
+
+Also, for the same reasons this package is not currently published to PyPI. The only way
+to use it is to clone the repo and run it locally yourself.
