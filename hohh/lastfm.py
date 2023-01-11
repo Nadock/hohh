@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import dataclasses
+import datetime
 from typing import Generator
 
 import pylast  # type: ignore
@@ -8,17 +9,20 @@ import pylast  # type: ignore
 from . import config
 
 
-@dataclasses.dataclass(frozen=True)
+@dataclasses.dataclass
 class Track:
     """A track/song read from Last.fm."""
 
-    artist: str
+    # TODO: Move this into a separate models module, it's not specific to Last.fm
+
     title: str
+    artist: str
+    date: datetime.datetime | None = None
 
     @classmethod
     def from_pylast(cls, track: pylast.Track) -> Track:
         """Create a `Track` from a `pylast.Track` with no network requests."""
-        return cls(artist=track.artist.name, title=track.title)
+        return cls(title=track.title, artist=track.artist.name)
 
 
 def get_playback_history(cfg: config.Config) -> Generator[Track, None, None]:
