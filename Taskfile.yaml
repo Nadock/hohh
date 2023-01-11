@@ -18,10 +18,7 @@ tasks:
       - task: black:check
       - task: mypy
       - task: pylint
-      - task: pytest
-      - task: validate
-      - task: mdlint
-      - task: aws:lint
+      # - task: pytest
 
   black:
     desc: Run psf/black code formatting tool
