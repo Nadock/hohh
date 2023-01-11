@@ -47,8 +47,8 @@ def _get_unfiltered_tracks(
     )
 
     tracks = network.get_authenticated_user().get_recent_tracks(
-        time_from=cfg.hh_start,
-        time_to=cfg.hh_end,
+        time_from=cfg.start_date,
+        time_to=cfg.end_date,
         stream=True,
         now_playing=False,
         limit=None,

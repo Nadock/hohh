@@ -109,5 +109,5 @@ def filter_tracks(
         )
         track.date = date
 
-        if cfg.hh_start <= date <= cfg.hh_end:
+        if cfg.start_date <= date <= cfg.end_date:
             yield track
