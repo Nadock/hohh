@@ -37,7 +37,9 @@ def _get_unfiltered_tracks(
 ) -> Generator[pylast.Track, None, None]:
     """Retrieve tracks played during the eligible window from Last.fm."""
     network = pylast.LastFMNetwork(
-        api_key=cfg.api_key, api_secret=cfg.api_secret, username=cfg.username
+        api_key=cfg.lastfm_key,
+        api_secret=cfg.lastfm_secret,
+        username=cfg.lastfm_username,
     )
 
     tracks = network.get_authenticated_user().get_recent_tracks(

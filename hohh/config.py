@@ -13,9 +13,12 @@ SYDNEY_TZ = pytz.timezone("Australia/Sydney")
 class Config:
     """Config for running the hohh CLI."""
 
-    api_key: str = ""
-    api_secret: str = ""
-    username: str = ""
+    lastfm_key: str = ""
+    lastfm_secret: str = ""
+    lastfm_username: str = ""
+
+    spotify_id: str = ""
+    spotify_secret: str = ""
 
     hh_start: datetime.datetime = SYDNEY_TZ.localize(
         datetime.datetime(2021, 12, 1, 0, 0, 0, 0), is_dst=None
@@ -25,5 +28,10 @@ class Config:
     )
 
     def __post_init__(self):
-        self.api_key = self.api_key or os.environ.get("LASTFM_KEY", "")
-        self.api_secret = self.api_secret or os.environ.get("LASTFM_SECRET", "")
+        self.lastfm_key = self.lastfm_key or os.environ.get("LASTFM_KEY", "")
+        self.lastfm_secret = self.lastfm_secret or os.environ.get("LASTFM_SECRET", "")
+
+        self.spotify_id = self.spotify_id or os.environ.get("SPOTIFY_ID", "")
+        self.spotify_secret = self.spotify_secret or os.environ.get(
+            "SPOTIFY_SECRET", ""
+        )
