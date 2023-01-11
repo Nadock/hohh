@@ -16,6 +16,12 @@ data. This step is optional if you also supply the `-s/--no-spotify` CLI flag.
 
 If you don't already have a Spotify account make one first, then go [here](https://developer.spotify.com/dashboard/applications) to create an API app. Once you have done that, put your **Client ID** and **Client Secret** in your `.env` file.
 
+4. Install dependencies via Poetry.
+
+This CLI is a Python package and it has a few important dependencies. Ensure you have
+[Poetry](https://python-poetry.org) installed, then run `poetry install` to setup a
+local virtual environment.
+
 ## Usage
 
 Once you've done the [setup](Setup) steps above once, you can run the CLI for any
