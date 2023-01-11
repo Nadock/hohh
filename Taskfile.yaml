@@ -1,0 +1,60 @@
+# https://taskfile.dev
+version: '3'
+
+
+dotenv:
+  - .env
+
+
+vars:
+  PY_PREFIX:
+    sh: if [[ ${POETRY_ACTIVE:-} != "1" ]]; then echo "poetry run"; fi
+
+
+tasks:
+  ci:
+    desc: Run all tasks required to merge code into the main branch
+    cmds:
+      - task: black:check
+      - task: mypy
+      - task: pylint
+      - task: pytest
+      - task: validate
+      - task: mdlint
+      - task: aws:lint
+
+  black:
+    desc: Run psf/black code formatting tool
+    sources:
+      - ./**/*.py
+    cmds:
+      - "{{.PY_PREFIX}} black {{.CLI_ARGS}} ./hohh"
+
+  black:check:
+    desc: Run psf/black code formatting tool in check only mode
+    sources:
+      - ./**/*.py
+    cmds:
+      - "{{.PY_PREFIX}} black {{.CLI_ARGS}} --check ./hohh"
+
+  pylint:
+    desc: Lint Python sources with pycqa/pylint
+    sources:
+      - ./**/*.py
+      - .pylintrc
+    cmds:
+      - "{{.PY_PREFIX}} pylint {{.CLI_ARGS}} ./hohh"
+
+  mypy:
+    desc: Run python/mypy Python type checking tool
+    sources:
+      - ./**/*.py
+    cmds:
+      - "{{.PY_PREFIX}} mypy {{.CLI_ARGS}} ./hohh"
+
+  pytest:
+    desc: Run unit tests via pytest-dev/pytest
+    sources:
+      - ./**/*.py
+    cmds:
+      - "{{.PY_PREFIX}} pytest {{.CLI_ARGS}} ./hohh"

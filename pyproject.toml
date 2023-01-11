@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "hohh"
+version = "0.1.0"
+description = ""
+authors = ["Riley Chase <riley.chase@rileychase.net>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+
+
+[tool.poetry.group.dev.dependencies]
+black = "==22.12.0"
+rope = "^1.6.0"
+mypy = "==0.991"
+pylint = "==2.15.10"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
