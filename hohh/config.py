@@ -10,7 +10,7 @@ SYDNEY_TZ = pytz.timezone("Australia/Sydney")
 
 
 @dataclasses.dataclass
-class Config:
+class Config:  # pylint: disable=too-many-instance-attributes
     """Config for running the hohh CLI."""
 
     no_spotify: bool
