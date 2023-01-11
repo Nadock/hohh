@@ -20,7 +20,8 @@ py-version=3.11
 
 disable=missing-module-docstring,
         logging-fstring-interpolation,
-        duplicate-code
+        duplicate-code,
+        fixme
 
 
 [LOGGING]
