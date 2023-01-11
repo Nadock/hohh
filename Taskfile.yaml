@@ -58,3 +58,7 @@ tasks:
       - ./**/*.py
     cmds:
       - "{{.PY_PREFIX}} pytest {{.CLI_ARGS}} ./hohh"
+
+  hohh:
+    cmds:
+      - "{{.PY_PREFIX}} python -m hohh {{.CLI_ARGS}}"
