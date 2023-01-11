@@ -4,19 +4,20 @@ Do you like to vote in the Australian music competition "[Triple J's Hottest One
 
 ## Setup
 
-1. `cp example.env .env`
-2. Setup a Last.fm API Account.
+1. Clone or download the repo — `hohh` is not published to PyPI yet.
+2. `cp example.env .env`
+3. Setup a Last.fm API Account.
 
 Follow the steps [here](https://www.last.fm/api/account/create) to create one, then put your **API Key** and **Shared Secret** in your `.env` file.
 
-3. Setup a Spotify API App
+4. Setup a Spotify API App
 
 This is only needed to retrieve release dates for tracks, as Last.fm has shitty
 data. This step is optional if you also supply the `-s/--no-spotify` CLI flag.
 
 If you don't already have a Spotify account make one first, then go [here](https://developer.spotify.com/dashboard/applications) to create an API app. Once you have done that, put your **Client ID** and **Client Secret** in your `.env` file.
 
-4. Install dependencies via Poetry.
+5. Install dependencies via Poetry.
 
 This CLI is a Python package and it has a few important dependencies. Ensure you have
 [Poetry](https://python-poetry.org) installed, then run `poetry install` to setup a

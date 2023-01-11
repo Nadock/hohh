@@ -44,7 +44,7 @@ class SpotifyClient:
 
         self._token = _json["access_token"]
         self._expires_at = datetime.datetime.now() + datetime.timedelta(
-            seconds=_json["expires_in"]
+            seconds=_json["expires_in"] - 60
         )
 
     def search_track(self, track: lastfm.Track) -> dict | None:
@@ -109,5 +109,5 @@ def filter_tracks(
         )
         track.date = date
 
-        if cfg.hh_start <= date <= cfg.hh_end:
+        if cfg.start_date <= date <= cfg.end_date:
             yield track
