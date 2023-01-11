@@ -21,7 +21,8 @@ py-version=3.11
 disable=missing-module-docstring,
         logging-fstring-interpolation,
         duplicate-code,
-        fixme
+        fixme,
+        too-few-public-methods
 
 
 [LOGGING]
