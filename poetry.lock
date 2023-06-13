@@ -406,13 +406,13 @@ testing = ["pytest", "pytest-benchmark"]
 
 [[package]]
 name = "pylast"
-version = "5.1.0"
+version = "5.2.0"
 description = "A Python interface to Last.fm and Libre.fm"
 optional = false
-python-versions = ">=3.7"
+python-versions = ">=3.8"
 files = [
-    {file = "pylast-5.1.0-py3-none-any.whl", hash = "sha256:73cc7429a57e4965b3769254b1cb9625cdd910d3ac26cb0a1dd57145cdc498c0"},
-    {file = "pylast-5.1.0.tar.gz", hash = "sha256:89300fdcdf423d7be0606bdc44da27c3b48c4d73aa1d4cb12672cc006c979bdc"},
+    {file = "pylast-5.2.0-py3-none-any.whl", hash = "sha256:89c7c01ea9f08c83865999d8907835157a8096e77dd9dc23420246eb66cfcff5"},
+    {file = "pylast-5.2.0.tar.gz", hash = "sha256:bb046804ef56a0c18072c750d61a282d47ac102a3b0b9c44a023eaf5b0934b0a"},
 ]
 
 [package.dependencies]
