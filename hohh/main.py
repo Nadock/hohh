@@ -29,16 +29,13 @@ def main():
     )
 
     writer = csv.DictWriter(
-        sys.stdout, ["Title", "Artist", "Date"], quoting=csv.QUOTE_ALL
+        sys.stdout, fieldnames=["Title", "Artist", "Date"], quoting=csv.QUOTE_ALL
     )
     writer.writeheader()
+
     for track in tracks:
         writer.writerow(
-            {
-                "Title": track.title,
-                "Artist": track.artist,
-                "Date": track.date,
-            }
+            {"Title": track.title, "Artist": track.artist, "Date": track.date}
         )
 
 
