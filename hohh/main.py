@@ -11,18 +11,21 @@ def main():
     args = setup_argparse().parse_args()
     cfg = config.Config(lastfm_username=args.username, no_spotify=args.no_spotify)
 
-    print(f'Getting tracks for LastFM user "{cfg.lastfm_username}"...', file=sys.stderr)
     tracks = lastfm.get_playback_history(cfg)
 
     if not cfg.no_spotify:
-        print(
-            f'Filtering tracks with Spotify data via API ID "{cfg.spotify_id}"...',
-            file=sys.stderr,
-        )
         client = spotify.SpotifyClient(
             spotify_id=cfg.spotify_id, spotify_secret=cfg.spotify_secret
         )
         tracks = spotify.filter_tracks(cfg, client, tracks)
+
+    print(
+        f'Getting tracks for LastFM user "{cfg.lastfm_username}"'
+        + (" without Spotify" if cfg.no_spotify else " with filtering via Spotify")
+        + "...",
+        file=sys.stderr,
+        flush=True,
+    )
 
     print("Title, Artist, Date", flush=True)
     for t in tracks:
