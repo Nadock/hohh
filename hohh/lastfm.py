@@ -59,7 +59,7 @@ def _get_unfiltered_tracks(
 
 
 def _dedupe_tracks(
-    tracks: Generator[pylast.Track, None, None]
+    tracks: Generator[pylast.Track, None, None],
 ) -> Generator[pylast.Track, None, None]:
     """Remove duplicate Tracks from the generator."""
     cache = set()
@@ -71,7 +71,7 @@ def _dedupe_tracks(
 
 
 def _render_tracks(
-    tracks: Generator[pylast.Track, None, None]
+    tracks: Generator[pylast.Track, None, None],
 ) -> Generator[Track, None, None]:
     """Convert each track from `pylast.Track` type into our `Track` type."""
     for track in tracks:
