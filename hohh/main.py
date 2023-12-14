@@ -37,6 +37,7 @@ def main():
         writer.writerow(
             {"Title": track.title, "Artist": track.artist, "Date": track.date}
         )
+        sys.stdout.flush()
 
 
 def setup_argparse() -> argparse.ArgumentParser:
