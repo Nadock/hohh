@@ -1,4 +1,5 @@
 import argparse
+import sys
 
 from hohh import spotify
 
@@ -10,18 +11,23 @@ def main():
     args = setup_argparse().parse_args()
     cfg = config.Config(lastfm_username=args.username, no_spotify=args.no_spotify)
 
+    print(f'Getting tracks for LastFM user "{cfg.lastfm_username}"...', file=sys.stderr)
     tracks = lastfm.get_playback_history(cfg)
 
     if not cfg.no_spotify:
+        print(
+            f'Filtering tracks with Spotify data via API ID "{cfg.spotify_id}"...',
+            file=sys.stderr,
+        )
         client = spotify.SpotifyClient(
             spotify_id=cfg.spotify_id, spotify_secret=cfg.spotify_secret
         )
         tracks = spotify.filter_tracks(cfg, client, tracks)
 
-    print("Title, Artist, Date")
+    print("Title, Artist, Date", flush=True)
     for t in tracks:
         date = t.date or ""
-        print(f'"{t.title}", "{t.artist}", "{date}"')
+        print(f'"{t.title}", "{t.artist}", "{date}"', flush=True)
 
 
 def setup_argparse() -> argparse.ArgumentParser:
