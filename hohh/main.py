@@ -1,4 +1,5 @@
 import argparse
+import csv
 import sys
 
 from hohh import spotify
@@ -27,10 +28,15 @@ def main():
         flush=True,
     )
 
-    print("Title, Artist, Date", flush=True)
-    for t in tracks:
-        date = t.date or ""
-        print(f'"{t.title}", "{t.artist}", "{date}"', flush=True)
+    writer = csv.DictWriter(
+        sys.stdout, fieldnames=["Title", "Artist", "Date"], quoting=csv.QUOTE_ALL
+    )
+    writer.writeheader()
+
+    for track in tracks:
+        writer.writerow(
+            {"Title": track.title, "Artist": track.artist, "Date": track.date}
+        )
 
 
 def setup_argparse() -> argparse.ArgumentParser:
