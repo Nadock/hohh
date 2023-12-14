@@ -37,7 +37,11 @@ def main() -> None:  # noqa: D103
 
     for track in tracks:
         writer.writerow(
-            {"Title": track.title, "Artist": track.artist, "Date": track.date},
+            {
+                "Title": track.title,
+                "Artist": track.artist,
+                "Date": track.date.date().isoformat() if track.date else "",
+            },
         )
         sys.stdout.flush()
 
