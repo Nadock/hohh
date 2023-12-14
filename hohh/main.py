@@ -7,8 +7,7 @@ from hohh import spotify
 from . import config, lastfm
 
 
-def main():
-    # pylint: disable=missing-docstring, invalid-name
+def main() -> None:  # noqa: D103
     args = setup_argparse().parse_args()
     cfg = config.Config(lastfm_username=args.username, no_spotify=args.no_spotify)
 
@@ -16,7 +15,8 @@ def main():
 
     if not cfg.no_spotify:
         client = spotify.SpotifyClient(
-            spotify_id=cfg.spotify_id, spotify_secret=cfg.spotify_secret
+            spotify_id=cfg.spotify_id,
+            spotify_secret=cfg.spotify_secret,
         )
         tracks = spotify.filter_tracks(cfg, client, tracks)
 
@@ -29,13 +29,15 @@ def main():
     )
 
     writer = csv.DictWriter(
-        sys.stdout, fieldnames=["Title", "Artist", "Date"], quoting=csv.QUOTE_ALL
+        sys.stdout,
+        fieldnames=["Title", "Artist", "Date"],
+        quoting=csv.QUOTE_ALL,
     )
     writer.writeheader()
 
     for track in tracks:
         writer.writerow(
-            {"Title": track.title, "Artist": track.artist, "Date": track.date}
+            {"Title": track.title, "Artist": track.artist, "Date": track.date},
         )
         sys.stdout.flush()
 
@@ -46,7 +48,7 @@ def setup_argparse() -> argparse.ArgumentParser:
         prog="hohh",
         description=(
             "Generate a list of tracks that you've heard that are eligible for this "
-            + "year's Triple J's Hottest 100."
+            "year's Triple J's Hottest 100."
         ),
     )
 

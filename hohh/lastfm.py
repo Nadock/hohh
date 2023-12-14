@@ -1,19 +1,22 @@
 from __future__ import annotations
 
 import dataclasses
-import datetime
-from typing import Generator
+from typing import TYPE_CHECKING
 
-import pylast  # type: ignore
+import pylast  # type: ignore[import-untyped]
 
-from . import config
+if TYPE_CHECKING:
+    import datetime
+    from collections.abc import Generator
+
+    from . import config
 
 
 @dataclasses.dataclass
 class Track:
     """A track/song read from Last.fm."""
 
-    # TODO: Move this into a separate models module, it's not specific to Last.fm
+    # TODO(Nadock): Move this into a separate module, it's not specific to Last.fm
 
     title: str
     artist: str
@@ -26,8 +29,7 @@ class Track:
 
 
 def get_playback_history(cfg: config.Config) -> Generator[Track, None, None]:
-    """
-    Return the user's Last.fm playback history for the eligible dates.
+    """Return the user's Last.fm playback history for the eligible dates.
 
     Playback history is returned as a generator of `Track` objects. These tracks have
     not been filtered for eligibility beyond the fact they were listened to during the
